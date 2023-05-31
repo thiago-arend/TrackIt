@@ -5,8 +5,8 @@ export const LoginContainer = styled.div`
     width: 303px;
 
     font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
+    font-style: normal;
+    font-weight: 400;
 
     display: flex;
     flex-direction: column;
