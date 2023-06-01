@@ -19,10 +19,12 @@ export default function App() {
       <Routes>
         {/* <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<SignUp />} />
+        <Route path="/habitos" element={<MyHabits />} />
         <Route path="/hoje" element={<Today />} />
         <Route path="/historico" element={<History />} /> */}
+        <Route path="/" element={<MyHabits />} />
 
-        <Route path="/habitos" element={<MyHabits />} />
+        
       </Routes>
 
       </BrowserRouter>

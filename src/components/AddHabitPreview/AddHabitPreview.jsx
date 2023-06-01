@@ -1,7 +1,10 @@
+import { AddHabitPreviewContainer } from "./styled";
+
 export default function AddHabitPreview() {
     return (
-        <>
-            AddHabitPreview
-        </>
-    )
+        <AddHabitPreviewContainer>
+            <span>Meus hábitos</span>
+            <button>+</button>
+        </AddHabitPreviewContainer>
+    );
 }
