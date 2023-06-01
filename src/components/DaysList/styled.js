@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DaysListContainer = styled.div`
-    width: 226px;
+    width: 240px;
     height: 30px;
 
     display: flex;
