@@ -7,7 +7,7 @@ export const DaysListContainer = styled.div`
     display: flex;
     justify-content: space-between;
 
-    div {
+    button {
         height: 30px;
         width: 30px;
         background-color: #FFF;
@@ -21,5 +21,11 @@ export const DaysListContainer = styled.div`
         color: #DBDBDB;
         font-family: 'Lexend Deca';
         font-size: 20px;
+
+        &:disabled {
+            background-color: #CFCFCF;
+            border: 1px solid #CFCFCF;
+            color: #FFF;
+        }
     }
 `;

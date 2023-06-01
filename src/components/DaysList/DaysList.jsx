@@ -3,13 +3,13 @@ import {DaysListContainer} from "./styled";
 export default function DaysList() {
     return (
         <DaysListContainer>
-            <div>D</div>
-            <div>S</div>
-            <div>T</div>
-            <div>Q</div>
-            <div>Q</div>
-            <div>S</div>
-            <div>S</div>
+            <button>D</button>
+            <button disabled>S</button>
+            <button>T</button>
+            <button disabled>Q</button>
+            <button>Q</button>
+            <button disabled>S</button>
+            <button>S</button>
         </DaysListContainer>
     )
 }

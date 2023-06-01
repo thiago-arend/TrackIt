@@ -33,25 +33,6 @@ export const AddHabitContainer = styled.div`
         }
     }
 
-    button {
-        width: 84px;
-        height: 35px;
-        border-radius: 5px;
-        background-color: #FFF;
-        border: 1px solid #FFF;
-        
-        color: #52B6FF;
-        font-family: 'Lexend Deca';
-        font-size: 16px;
-        font-weight: 400;
-
-        &:nth-child(2) {
-            background-color: #52B6FF;
-            border: 1px solid #52B6FF;
-            color: #FFF;
-        }
-    }
-
     > div {
         width: 100%;
 
@@ -59,6 +40,25 @@ export const AddHabitContainer = styled.div`
             display: flex;
             justify-content: end;
             gap: 12px;
+        }
+
+        > button {
+            width: 84px;
+            height: 35px;
+            border-radius: 5px;
+            background-color: #FFF;
+            border: 1px solid #FFF;
+            
+            color: #52B6FF;
+            font-family: 'Lexend Deca';
+            font-size: 16px;
+            font-weight: 400;
+
+            &:nth-child(2) {
+                background-color: #52B6FF;
+                border: 1px solid #52B6FF;
+                color: #FFF;
+            }
         }
     }
 `;
