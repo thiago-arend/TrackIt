@@ -3,14 +3,14 @@ import { AddHabitContainer } from "./styled";
 
 export default function AddHabit() {
     return (
-        <AddHabitContainer>
+        <AddHabitContainer data-test="habit-create-container" >
             <div>
-                <input type="text" name="habito" placeholder="nome do hábito" />
+                <input data-test="habit-name-input" type="text" name="habito" placeholder="nome do hábito" />
                 <DaysList />
             </div>
             <div>
-                <button>Cancelar</button>
-                <button>Salvar</button>
+                <button data-test="habit-create-cancel-btn">Cancelar</button>
+                <button data-test="habit-create-save-btn">Salvar</button>
             </div>
         </AddHabitContainer>
     )

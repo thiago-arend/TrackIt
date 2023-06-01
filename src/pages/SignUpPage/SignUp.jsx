@@ -8,14 +8,14 @@ export default function SignUp() {
                 <img src={Logo} alt="logo TrackIt" />
                 <FormContainer>
                     <form>
-                        <input type="email" name="email" placeholder="email" />
-                        <input type="password" name="password" placeholder="senha" />
-                        <input type="text" name="name" placeholder="nome" />
-                        <input type="url" name="image" placeholder="foto" />
-                        <button>Cadastrar</button>
+                        <input data-test="email-input" type="email" name="email" placeholder="email" />
+                        <input data-test="password-input" type="password" name="password" placeholder="senha" />
+                        <input data-test="user-name-input" type="text" name="name" placeholder="nome" />
+                        <input data-test="user-image-input" type="url" name="image" placeholder="foto" />
+                        <button data-test="signup-btn">Cadastrar</button>
                     </form>
                 </FormContainer>
-                <div><a>Já tem uma conta? Faça login!</a></div>
+                <div><a data-test="login-link">Já tem uma conta? Faça login!</a></div>
             </LoginContainer>
         </>
     );

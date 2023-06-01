@@ -4,7 +4,7 @@ export default function AddHabitPreview() {
     return (
         <AddHabitPreviewContainer>
             <span>Meus hábitos</span>
-            <button>+</button>
+            <button data-test="habit-create-btn" >+</button>
         </AddHabitPreviewContainer>
     );
 }

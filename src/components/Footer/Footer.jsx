@@ -4,9 +4,9 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export default function Footer() {
     return (
-        <FooterContainer>
-            <a>Hábitos</a>
-            <TodayContainer>
+        <FooterContainer data-test="menu">
+            <a data-test="habit-link">Hábitos</a>
+            <TodayContainer data-test="today-link">
                 <CircularProgressbar
                     text="Hoje"
                     value={50}
@@ -20,7 +20,7 @@ export default function Footer() {
                         trailColor: "#52B6FF"
                     })}/>
             </TodayContainer>
-            <a>Histórico</a>
+            <a data-test="history-link" >Histórico</a>
         </FooterContainer>
     )
 }

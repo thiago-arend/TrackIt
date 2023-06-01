@@ -3,13 +3,13 @@ import { HabitPlanningContainer } from "./styled"
 
 export default function HabitPlanning() {
     return (
-        <HabitPlanningContainer>
+        <HabitPlanningContainer data-test="habit-container">
             <div>
-                <span>Ler 1 capítulo de livro</span>
+                <span data-test="habit-name">Ler 1 capítulo de livro</span>
                 <DaysList />
             </div>
             <div>
-                <ion-icon name="trash-outline"></ion-icon>
+                <ion-icon name="trash-outline" data-test="habit-delete-btn"></ion-icon>
             </div>
         </HabitPlanningContainer>
     )

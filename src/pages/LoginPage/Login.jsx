@@ -8,12 +8,12 @@ export default function Login() {
                 <img src={Logo} alt="logo TrackIt" />
                 <FormContainer>
                     <form>
-                        <input type="email" name="email" placeholder="email" />
-                        <input type="password" name="password" placeholder="senha" />
-                        <button>Entrar</button>
+                        <input data-test="email-input" type="email" name="email" placeholder="email" />
+                        <input data-test="password-input" type="password" name="password" placeholder="senha" />
+                        <button data-test="login-btn">Entrar</button>
                     </form>
                 </FormContainer>
-                <div><a>Não tem uma conta? Cadastre-se!</a></div>
+                <div><a data-test="signup-link">Não tem uma conta? Cadastre-se!</a></div>
             </LoginContainer>
         </>
     );
