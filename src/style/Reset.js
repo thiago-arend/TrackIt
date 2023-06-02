@@ -48,6 +48,10 @@ const Reset = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+    button::-moz-focus-inner {
+        padding: 0 !important;
+        border: 0 none !important;
+    }
 `;
 
 export default Reset;

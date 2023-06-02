@@ -24,6 +24,7 @@ export const AddHabitPreviewContainer = styled.div`
         width: 40px;
         height: 35px;
         border-radius: 5px;
+        padding: 0px;
 
         font-family: 'Lexend Deca';
         font-weight: 400;
