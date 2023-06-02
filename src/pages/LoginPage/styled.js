@@ -63,6 +63,10 @@ export const FormContainer = styled.div`
             font-size: 20px;
             color: #DBDBDB;
         }
+
+        &:disabled {
+            background-color: #D4D4D4;
+        }
     }
 
     button {
@@ -72,6 +76,11 @@ export const FormContainer = styled.div`
         background-color: #52B6FF;
         border: 1px solid #52B6FF;
         border-radius: 5px;
+        padding: 0px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         text-align: center;
         color: #FFF;
@@ -79,5 +88,9 @@ export const FormContainer = styled.div`
         font-style: normal;
         font-weight: 400;
         font-size: 21px;
+
+        &:disabled {
+            opacity: 0.7;
+        }
     }
 `;
