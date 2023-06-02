@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/habitos" element={<MyHabits />} />
         <Route path="/hoje" element={<Today />} />
         <Route path="/historico" element={<History />} /> */}
-        <Route path="/" element={<MyHabits />} />
+        <Route path="/" element={<Today />} />
 
         
       </Routes>

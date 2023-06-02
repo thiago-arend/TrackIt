@@ -48,6 +48,7 @@ const Reset = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+    // remove o padding automatico do botao
     button::-moz-focus-inner {
         padding: 0 !important;
         border: 0 none !important;
