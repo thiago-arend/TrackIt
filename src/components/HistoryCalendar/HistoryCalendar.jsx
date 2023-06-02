@@ -1,7 +1,7 @@
 export default function HistoryCalendar() {
     return (
         <>
-         HistoryCalendar
+         API do HistoryCalendar
         </>
     )
 }

@@ -4,16 +4,15 @@ import AddHabitPreview from "../../components/AddHabitPreview/AddHabitPreview";
 import AddHabit from "../../components/AddHabit/AddHabit";
 import HabitsCreationStatus from "../../components/HabitsCreationStatus/HabitsCreationStatus";
 import HabitPlanning from "../../components/HabitPlanning/HabitPlanning";
+import { MyHabitsContainer } from "./styled";
 
 export default function MyHabits() {
     return (
-        <>
-            <NavBar />
+        <MyHabitsContainer>
             <AddHabitPreview />
             {/*<AddHabit />*/}
             <HabitPlanning />
             <HabitsCreationStatus />
-            <Footer />
-        </>
+        </MyHabitsContainer>
     );
 }

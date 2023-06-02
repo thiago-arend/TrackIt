@@ -6,6 +6,8 @@ import Today from "./pages/TodayPage/Today";
 import History from "./pages/HistoryPage/History";
 import Reset from "./style/Reset";
 import GlobalStyle from "./style/GlobalStyle";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
 
@@ -13,20 +15,17 @@ export default function App() {
     <>
       <Reset />
       <GlobalStyle />
-      
+
       <BrowserRouter>
-      
-      <Routes>
-        {/* <Route path="/" element={<Login />} />
-        <Route path="/cadastro" element={<SignUp />} />
-        <Route path="/habitos" element={<MyHabits />} />
-        <Route path="/hoje" element={<Today />} />
-        <Route path="/historico" element={<History />} /> */}
-        <Route path="/" element={<Today />} />
-
-        
-      </Routes>
-
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/cadastro" element={<SignUp />} />
+          <Route path="/habitos" element={<MyHabits />} />
+          <Route path="/hoje" element={<Today />} />
+          <Route path="/historico" element={<History />} />
+        </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )

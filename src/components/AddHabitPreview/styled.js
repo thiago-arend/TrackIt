@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const AddHabitPreviewContainer = styled.div`
     width: 100%;
-    height: 90px;
-    margin-top: 70px;
+    height: fit-content;
+    margin-bottom: 24px;
 
     display: flex;
-    justify-content: space-between;;
+    justify-content: space-between;
     align-items: center;
 
     span {
