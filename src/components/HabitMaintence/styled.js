@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HabitMaintenceContainer = styled.div`
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto 16px;
     padding: 12px 18px 12px;
     width: 340px;
     height: 94px;

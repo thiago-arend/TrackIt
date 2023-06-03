@@ -8,3 +8,4 @@ export const MSG_ERRO_NAO_NOMEOU_HABITO = "Por favor, escolha um nome para o seu
 export const MSG_CONFIRMACAO_REMOVER_HABITO = "Deseja realmente remover esse hábito?";
 
 export const WEEK_DAYS = ["D", "S", "T", "Q", "Q", "S", "S"];
+export const WEEK_DAYS_FULL = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
