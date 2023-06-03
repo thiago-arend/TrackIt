@@ -3,8 +3,13 @@ import NavBar from "../../components/NavBar/NavBar";
 import HabitDate from "../../components/HabitDate/HabitDate";
 import HabitMaintence from "../../components/HabitMaintence/HabitMaintence";
 import { TodayContainer, DateContainer } from "./styled"
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Today() {
+    const {token} = useContext(UserContext);
+    console.log(token);
+    
     return (
         <>
             {/*<HabitDate />*/}

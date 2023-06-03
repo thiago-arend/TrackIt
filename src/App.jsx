@@ -8,11 +8,12 @@ import Reset from "./style/Reset";
 import GlobalStyle from "./style/GlobalStyle";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import { UserProvider } from "./contexts/UserContext";
 
 export default function App() {
 
   return (
-    <>
+    <UserProvider>
       <Reset />
       <GlobalStyle />
 
@@ -27,6 +28,6 @@ export default function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </UserProvider>
   )
 }

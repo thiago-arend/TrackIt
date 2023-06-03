@@ -1,11 +1,15 @@
 import { LoginContainer, FormContainer } from "./styled";
 import Logo from "../../assets/logo.svg";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-import { URL_BASE, MSG_ERRO_INTERNO } from "../../constants";
+import { URL_BASE, MSG_ERRO_INTERNO, MSG_ERRO_USUARIO_NAO_CADASTRADO, MSG_ERRO_SENHA_INCORRETA } from "../../constants";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
+import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
-export default function Login() {
+export default function Login(props) {
+    const [disabledForm, setDisabledForm] = useState(false);
+    const {setToken} = useContext(UserContext);
     const navigate = useNavigate();
     const [loginData, setLoginData] = useState(
         {
@@ -22,15 +26,27 @@ export default function Login() {
 
     function sendApiData(e) {
         e.preventDefault();
+        setDisabledForm(true)
 
         axios.post(`${URL_BASE}/auth/login`, loginData)
             .then((res) => {
+                setDisabledForm(false);
+                setToken(res.data.token);
                 navigate("/hoje");
             })
             .catch((err) => {
-                (err.response.request.status === 422)
-                    ? alert(`Usuário não cadastrado... Faça seu cadastro e poderá logar-se!`)
-                    : alert(MSG_ERRO_INTERNO);
+                setDisabledForm(false);
+                console.log(err);
+                switch (err.response.request.status) {
+                    case 422:
+                        alert(MSG_ERRO_USUARIO_NAO_CADASTRADO);
+                        break;
+                    case 401:
+                        alert(MSG_ERRO_SENHA_INCORRETA);
+                        break;
+                    default:
+                        alert(MSG_ERRO_INTERNO)
+                }
             });
     }
 
@@ -39,9 +55,25 @@ export default function Login() {
             <img src={Logo} alt="logo TrackIt" />
             <FormContainer>
                 <form onSubmit={sendApiData}>
-                    <input onChange={handleChange} data-test="email-input" type="email" name="email" value={loginData.email} placeholder="email" />
-                    <input onChange={handleChange} data-test="password-input" type="password" name="password" value={loginData.password} placeholder="senha" />
-                    <button type="submit" data-test="login-btn">Entrar</button>
+                    <input
+                        onChange={handleChange}
+                        data-test="email-input"
+                        type="email"
+                        name="email"
+                        value={loginData.email}
+                        placeholder="email"
+                        disabled={disabledForm} />
+                    <input
+                        onChange={handleChange}
+                        data-test="password-input"
+                        type="password"
+                        name="password"
+                        value={loginData.password}
+                        placeholder="senha"
+                        disabled={disabledForm} />
+                    <LoadingButton
+                        disabled={disabledForm}
+                        texto="Entrar" />
                 </form>
             </FormContainer>
             <div>

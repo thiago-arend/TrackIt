@@ -7,7 +7,9 @@ import HabitPlanning from "../../components/HabitPlanning/HabitPlanning";
 import { MyHabitsContainer } from "./styled";
 
 export default function MyHabits() {
+
     return (
+
         <MyHabitsContainer>
             <AddHabitPreview />
             {/*<AddHabit />*/}

@@ -3,7 +3,7 @@ import Logo from "../../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { URL_BASE, MSG_ERRO_INTERNO } from "../../constants";
+import { URL_BASE, MSG_ERRO_INTERNO, MSG_ERRO_CADASTRO_DUPLICADO } from "../../constants";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
 export default function SignUp() {
@@ -29,14 +29,14 @@ export default function SignUp() {
         setDisabledForm(true);
 
         axios.post(`${URL_BASE}/auth/sign-up`, signUpData)
-            .then(() => {
+            .then((res) => {
                 setDisabledForm(false);
                 navigate("/");
             })
             .catch((err) => {
                 setDisabledForm(false);
                 (err.response.request.status === 409)
-                    ? alert(`Já existe um usuário cadastrado com esse e-mail!`)
+                    ? alert(MSG_ERRO_CADASTRO_DUPLICADO)
                     : alert(MSG_ERRO_INTERNO);
             });
     }
