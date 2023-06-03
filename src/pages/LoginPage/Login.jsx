@@ -9,7 +9,7 @@ import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
 export default function Login(props) {
     const [disabledForm, setDisabledForm] = useState(false);
-    const {setToken} = useContext(UserContext);
+    const {setProfileImage, setToken} = useContext(UserContext);
     const navigate = useNavigate();
     const [loginData, setLoginData] = useState(
         {
@@ -32,6 +32,7 @@ export default function Login(props) {
             .then((res) => {
                 setDisabledForm(false);
                 setToken(res.data.token);
+                setProfileImage(res.data.image);
                 navigate("/hoje");
             })
             .catch((err) => {

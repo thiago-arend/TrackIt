@@ -19,6 +19,7 @@ export const FooterContainer = styled.div`
     a {
         color: #52B6FF;
         margin: 0 18px;
+        text-decoration: none;
     }
 `;
 

@@ -29,7 +29,7 @@ export default function SignUp() {
         setDisabledForm(true);
 
         axios.post(`${URL_BASE}/auth/sign-up`, signUpData)
-            .then((res) => {
+            .then(() => {
                 setDisabledForm(false);
                 navigate("/");
             })
