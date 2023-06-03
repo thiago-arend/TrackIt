@@ -1,5 +1,3 @@
-import Footer from "../../components/Footer/Footer";
-import NavBar from "../../components/NavBar/NavBar";
 import AddHabitPreview from "../../components/AddHabitPreview/AddHabitPreview";
 import AddHabit from "../../components/AddHabit/AddHabit";
 import HabitsCreationStatus from "../../components/HabitsCreationStatus/HabitsCreationStatus";
@@ -14,8 +12,6 @@ export default function MyHabits() {
     const { preparaConfig } = useContext(UserContext);
     const [showAddHabit, setShowAddHabit] = useState(false);
     const [listaHabitos, setListaHabitos] = useState([]);
-
-    console.log('lista habitos ====>', listaHabitos);
 
     useEffect(() => {
 
@@ -32,7 +28,9 @@ export default function MyHabits() {
 
         <MyHabitsContainer>
             <AddHabitPreview setShowAddHabit={setShowAddHabit} />
-            {(showAddHabit) && <AddHabit setShowAddHabit={setShowAddHabit}/>}
+            {(showAddHabit) && <AddHabit setShowAddHabit={setShowAddHabit}
+                                        setListaHabitos={setListaHabitos}
+                                        listaHabitos={listaHabitos} />}
             {
                 (listaHabitos.length === 0)
                     ?

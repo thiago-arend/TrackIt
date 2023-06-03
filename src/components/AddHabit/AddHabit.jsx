@@ -3,11 +3,14 @@ import DaysList from "../DaysList/DaysList";
 import { AddHabitContainer } from "./styled";
 import { UserContext } from "../../contexts/UserContext";
 import axios from "axios";
-import { URL_BASE } from "../../constants";
+import { MSG_ERRO_INTERNO, 
+    MSG_ERRO_NAO_SELECIONOU_DIA, 
+    MSG_ERRO_NAO_NOMEOU_HABITO, 
+    URL_BASE } from "../../constants";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
 export default function AddHabit(props) {
-    const {setShowAddHabit} = props;
+    const {setListaHabitos, listaHabitos, setShowAddHabit} = props;
     const [disabledForm, setDisabledForm] = useState(false);
     const { preparaConfig, setDadosAddHabit, dadosAddHabit } = useContext(UserContext);
 
@@ -15,6 +18,11 @@ export default function AddHabit(props) {
     const [chosedDays, setChosedDays] = useState((dadosAddHabit !== null) ? dadosAddHabit.days : []);
 
     function sendApiData() {
+        if (chosedDays.length === 0) {
+            alert(MSG_ERRO_NAO_SELECIONOU_DIA);
+            return;
+        }
+
         setDisabledForm(true);
 
         const obj = {
@@ -24,13 +32,17 @@ export default function AddHabit(props) {
 
         axios.post(`${URL_BASE}/habits`, obj, preparaConfig())
             .then((res) => {
+                limparDados()
                 setDisabledForm(false);
-                console.log(res);
+                setShowAddHabit(false);
+
+                setListaHabitos([...listaHabitos, res.data]);
             })
             .catch((err) => {
-                setDisabledForm(false);
                 console.log(err);
-            })
+                setDisabledForm(false);
+                alert(MSG_ERRO_NAO_NOMEOU_HABITO);
+            });
     }
 
     function persisteDados() {
@@ -41,6 +53,12 @@ export default function AddHabit(props) {
             }
         );
         setShowAddHabit(false);
+    }
+
+    function limparDados() {
+        setDadosAddHabit(null);
+        setChosedDays([]);
+        setHabitoName("");
     }
 
     return (
