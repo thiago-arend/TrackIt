@@ -7,8 +7,16 @@ export const UserProvider = ({ children }) => {
     const [profileImage, setProfileImage] = 
         useState("https://static.wikia.nocookie.net/wikiesponja/images/4/41/180px-Spongebob-squarepants.png/revision/latest?cb=20120201005813&path-prefix=pt-br");
 
+    const preparaConfig = () => {
+        return {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    }
+
     return (
-        <UserContext.Provider value={{ token, setToken, profileImage, setProfileImage }}>
+        <UserContext.Provider value={{ preparaConfig, token, setToken, profileImage, setProfileImage }}>
             {children}
         </UserContext.Provider>
     )

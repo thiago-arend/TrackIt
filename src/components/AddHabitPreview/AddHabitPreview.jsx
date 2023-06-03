@@ -1,10 +1,12 @@
 import { AddHabitPreviewContainer } from "./styled";
 
-export default function AddHabitPreview() {
+export default function AddHabitPreview(props) {
+    const {setShowAddHabit} = props;
+
     return (
         <AddHabitPreviewContainer>
             <span>Meus hábitos</span>
-            <button data-test="habit-create-btn" >+</button>
+            <button onClick={() => setShowAddHabit(true)} data-test="habit-create-btn" >+</button>
         </AddHabitPreviewContainer>
     );
 }
