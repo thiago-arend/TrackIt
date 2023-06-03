@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
-export default function Login(props) {
+export default function Login() {
     const [disabledForm, setDisabledForm] = useState(false);
     const {setProfileImage, setToken} = useContext(UserContext);
     const navigate = useNavigate();

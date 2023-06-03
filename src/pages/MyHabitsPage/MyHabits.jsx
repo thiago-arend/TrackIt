@@ -11,17 +11,16 @@ import { URL_BASE } from "../../constants";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function MyHabits() {
-    const {preparaConfig} = useContext(UserContext);
+    const { preparaConfig } = useContext(UserContext);
     const [showAddHabit, setShowAddHabit] = useState(false);
-    const [listaHabitos, setListaHabitos] = useState(null);
+    const [listaHabitos, setListaHabitos] = useState([]);
 
-    console.log(listaHabitos);
+    console.log('lista habitos ====>', listaHabitos);
 
     useEffect(() => {
 
         axios.get(`${URL_BASE}/habits`, preparaConfig())
             .then((res) => {
-                console.log(res);
                 setListaHabitos(res.data);
             })
             .catch((err) => {
@@ -34,8 +33,15 @@ export default function MyHabits() {
         <MyHabitsContainer>
             <AddHabitPreview setShowAddHabit={setShowAddHabit} />
             {(showAddHabit) && <AddHabit />}
-            {/*<HabitPlanning />*/}
-            <HabitsCreationStatus />
+            {
+                (listaHabitos.length === 0)
+                    ?
+                    <HabitsCreationStatus />
+                    :
+                    (listaHabitos.map(h => (<HabitPlanning
+                            nomeHabito={h.name}
+                            diasHabitos={h.days} />)))
+            }
         </MyHabitsContainer>
     );
 }
