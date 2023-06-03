@@ -84,7 +84,7 @@ export default function AddHabit(props) {
                 <LoadingButton
                         disabled={disabledForm}
                         texto="Salvar"
-                        type="submit"
+                        type="button"
                         width="42"
                         height="42"
                         funcaoClick={sendApiData} />
