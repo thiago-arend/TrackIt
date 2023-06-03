@@ -18,9 +18,6 @@ export default function MyHabits() {
         axios.get(`${URL_BASE}/habits`, preparaConfig())
             .then((res) => {
                 setListaHabitos(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
             });
     }, []);
 
@@ -52,7 +49,8 @@ export default function MyHabits() {
                         nomeHabito={h.name}
                         diasHabitos={h.days}
                         idHabito={h.id}
-                        removerHabito={removerHabito} />)))
+                        removerHabito={removerHabito}
+                        key={h.id} />)))
             }
         </MyHabitsContainer>
     );

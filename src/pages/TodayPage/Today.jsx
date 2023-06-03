@@ -8,7 +8,6 @@ import { UserContext } from "../../contexts/UserContext";
 
 export default function Today() {
     const {token} = useContext(UserContext);
-    console.log(token);
     
     return (
         <>

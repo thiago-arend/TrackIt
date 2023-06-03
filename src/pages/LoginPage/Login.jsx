@@ -37,7 +37,7 @@ export default function Login() {
             })
             .catch((err) => {
                 setDisabledForm(false);
-                console.log(err);
+
                 switch (err.response.request.status) {
                     case 422:
                         alert(MSG_ERRO_USUARIO_NAO_CADASTRADO);
