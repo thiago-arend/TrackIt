@@ -79,7 +79,10 @@ export default function SignUp() {
                         disabled={disabledForm} />
                     <LoadingButton
                         disabled={disabledForm}
-                        texto="Cadastrar" />
+                        texto="Cadastrar"
+                        type="submit"
+                        height="65"
+                        width="65" />
                 </form>
             </FormContainer>
             <div><Link to="/" data-test="login-link">Já tem uma conta? Faça login!</Link></div>

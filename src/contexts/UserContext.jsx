@@ -6,6 +6,7 @@ export const UserProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [profileImage, setProfileImage] = 
         useState("https://static.wikia.nocookie.net/wikiesponja/images/4/41/180px-Spongebob-squarepants.png/revision/latest?cb=20120201005813&path-prefix=pt-br");
+    const [dadosAddHabit, setDadosAddHabit] = useState(null);
 
     const preparaConfig = () => {
         return {
@@ -16,7 +17,13 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ preparaConfig, token, setToken, profileImage, setProfileImage }}>
+        <UserContext.Provider value={{
+             setDadosAddHabit, 
+             dadosAddHabit, 
+             preparaConfig, 
+             token, setToken, 
+             profileImage, 
+             setProfileImage }}>
             {children}
         </UserContext.Provider>
     )

@@ -32,7 +32,7 @@ export default function MyHabits() {
 
         <MyHabitsContainer>
             <AddHabitPreview setShowAddHabit={setShowAddHabit} />
-            {(showAddHabit) && <AddHabit />}
+            {(showAddHabit) && <AddHabit setShowAddHabit={setShowAddHabit}/>}
             {
                 (listaHabitos.length === 0)
                     ?

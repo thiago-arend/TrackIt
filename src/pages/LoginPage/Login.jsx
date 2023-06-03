@@ -74,7 +74,10 @@ export default function Login() {
                         disabled={disabledForm} />
                     <LoadingButton
                         disabled={disabledForm}
-                        texto="Entrar" />
+                        texto="Entrar"
+                        type="submit"
+                        height="65"
+                        width="65" />
                 </form>
             </FormContainer>
             <div>

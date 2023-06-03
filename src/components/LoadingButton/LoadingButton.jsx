@@ -1,14 +1,14 @@
 import { ThreeDots } from 'react-loader-spinner'
 
 export default function LoadingButton(props) {
-    const { disabled, texto } = props;
+    const { disabled, texto, type, funcaoClick, width, height } = props;
 
     return (
 
-        <button disabled={disabled} type="submit" data-test="signup-btn">
+        <button disabled={disabled} type={type} onClick={funcaoClick}>
             <ThreeDots
-                height="65"
-                width="65"
+                height={height}
+                width={width}
                 radius="9"
                 color="#FFF"
                 ariaLabel="three-dots-loading"

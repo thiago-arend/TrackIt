@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AddHabitContainer = styled.div`
-    margin: 0 auto;
+    margin: 0 auto 22px;
     padding: 18px 18px;
     width: 340px;
     height: 180px;
@@ -48,6 +48,10 @@ export const AddHabitContainer = styled.div`
             border-radius: 5px;
             background-color: #FFF;
             border: 1px solid #FFF;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
             
             color: #52B6FF;
             font-family: 'Lexend Deca';
