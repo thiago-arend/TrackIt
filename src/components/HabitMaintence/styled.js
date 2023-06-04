@@ -31,22 +31,32 @@ export const HabitMaintenceContainer = styled.div`
         span {
             font-size: 13px;
             line-height: 16px;
+
+            // span currentSequence
+            &:nth-child(1) {
+                color: ${props => props.done ? "#8FC549" : "#666"};
+            }
+            // span highestSequence
+            &:nth-child(3) {
+                color: #666;
+            }
+
+            //span {
+            //    color: ${props => props.done ? "#8FC549" : "#666"};
+            //}
         }
 
         &:nth-child(2) {
             width: 69px;
             height: 69px;
-            background-color: #EBEBEB;
-            border: 1px solid #E7E7E7;
+            background-color: ${props => props.done ? "#8FC549" : "#EBEBEB"};
+            border: 1px solid ${props => props.done ? "#8FC549" : "#E7E7E7"};
             border-radius: 5px;
             padding-right: 0.3px;
 
             display: flex;
             justify-content: center;
             align-items: center;
-
-            /* background-color: #8FC549;
-            border: 1px solid #8FC549; */
         }
     }
 

@@ -16,8 +16,6 @@ export default function Today() {
         dSemana: WEEK_DAYS_FULL[dayjs().format("d").toString()]
     };
 
-    console.log(date);
-
     useEffect(() => {
         axios.get(`${URL_BASE}/habits/today`, preparaConfig())
             .then((res) => {
@@ -28,7 +26,8 @@ export default function Today() {
                 console.log(err);
             });
     }, []);
-    
+
+
     return (
         <>
             {/*<HabitDate />*/}
@@ -39,7 +38,9 @@ export default function Today() {
                 </DateContainer>
                 {todayHabits.map(h => <HabitMaintence 
                                         key={h.id}
-                                        habito={h} />)}
+                                        habito={h}
+                                        setTodayHabits={setTodayHabits}
+                                        todayHabits={todayHabits} />)}
             </TodayContainer>
         </>
     );

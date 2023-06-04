@@ -6,6 +6,8 @@ export const MSG_ERRO_CADASTRO_DUPLICADO = "Já existe um usuário cadastrado co
 export const MSG_ERRO_NAO_SELECIONOU_DIA = "Por favor, selecione pelo menos um dia da semana!";
 export const MSG_ERRO_NAO_NOMEOU_HABITO = "Por favor, escolha um nome para o seu hábito!";
 export const MSG_CONFIRMACAO_REMOVER_HABITO = "Deseja realmente remover esse hábito?";
+export const MSG_ERRO_HABITO_INVALIDO_CHECK = "Você selecionou um hábito já marcado, ou esse hábito não é do dia atual!";
+export const MSG_ERRO_HABITO_INVALIDO_UNCHECK = "Você selecionou um hábito desmarcado, ou esse hábito não é do dia atual!";
 
 export const WEEK_DAYS = ["D", "S", "T", "Q", "Q", "S", "S"];
 export const WEEK_DAYS_FULL = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
