@@ -8,7 +8,7 @@ import { URL_BASE, WEEK_DAYS_FULL } from "../../constants";
 import dayjs from "dayjs";
 
 export default function Today() {
-    const { preparaConfig, setProgress, progress, setProfileImage, setToken } = useContext(UserContext);
+    const { setProgress, progress, setProfileImage, setToken } = useContext(UserContext);
     const [todayHabits, setTodayHabits] = useState([]);
     const date = {
         d: dayjs().format("DD"),
@@ -18,7 +18,7 @@ export default function Today() {
     const dadosUsuario = localStorage.getItem("userData");
     let user; // passar diretamente o user.token nas chamadas a api
               // é uma maneira de evitar o 'delay' de renderização por mudança de estado
-              
+
     useEffect(() => {
 
         if (dadosUsuario !== null) {

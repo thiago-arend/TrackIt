@@ -11,9 +11,7 @@ export const UserProvider = ({ children }) => {
         concluidos: 0
     });
 
-    //const [progress, setProgress] = useState([]);
-
-    /*function setDone(done, id) {
+    function setDone(done, id) {
         const array = progress.map(p => {
             if (p.id === id) {
                 p.done = done;
@@ -41,7 +39,7 @@ export const UserProvider = ({ children }) => {
             return p;
         });
         setProgress([...array]);
-    }*/
+    }
 
     return (
         <UserContext.Provider value={{

@@ -6,9 +6,20 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function HabitMaintence(props) {
-    const { preparaConfig, setProgress, token } = useContext(UserContext);
+    const { token } = useContext(UserContext);
     const { id, name, done, currentSequence, highestSequence } = props.habito;
     const { todayHabits, setTodayHabits, carregaProgresso } = props;
+
+    function recarregaHabitos() {
+        axios.get(`${URL_BASE}/habits/today`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((res) => {
+            setTodayHabits([...res.data])
+        })
+    }
 
     function marcarHabito() {
 
@@ -20,8 +31,8 @@ export default function HabitMaintence(props) {
                 }
             })
             .then((res) => {
-                console.log(res);
                 carregaProgresso(1, todayHabits);
+                recarregaHabitos();
             })
             .catch((err) => {
                 if (err.response.request.status === 400)
@@ -36,8 +47,8 @@ export default function HabitMaintence(props) {
                 }
             })
             .then((res) => {
-                console.log(res);
                 carregaProgresso(-1, todayHabits);
+                recarregaHabitos();
             })
             .catch((err) => {
                 if (err.response.request.status === 400)

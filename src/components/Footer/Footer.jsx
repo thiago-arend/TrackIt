@@ -9,8 +9,6 @@ export default function Footer() {
     const location = useLocation();
     const {progress} = useContext(UserContext);
 
-    console.log("footer", progress);
-
     if (location.pathname !== "/" && location.pathname !== "/cadastro")
         return (
             <FooterContainer data-test="menu">
