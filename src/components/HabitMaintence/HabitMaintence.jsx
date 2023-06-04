@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function HabitMaintence(props) {
-    const { preparaConfig, setProgress } = useContext(UserContext);
+    const { preparaConfig, setProgress, token } = useContext(UserContext);
     const { id, name, done, currentSequence, highestSequence } = props.habito;
     const { todayHabits, setTodayHabits, carregaProgresso } = props;
 
@@ -14,7 +14,11 @@ export default function HabitMaintence(props) {
 
         if (done === false) { // se tarefa não foi concluida, envia requisição específica
 
-            axios.post(`${URL_BASE}/habits/${id}/check`, {}, preparaConfig())
+            axios.post(`${URL_BASE}/habits/${id}/check`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             .then((res) => {
                 console.log(res);
                 carregaProgresso(1, todayHabits);
@@ -26,7 +30,11 @@ export default function HabitMaintence(props) {
         }
         else { // se tarefa foi concluida, envia requisição específica
 
-            axios.post(`${URL_BASE}/habits/${id}/uncheck`, {}, preparaConfig())
+            axios.post(`${URL_BASE}/habits/${id}/uncheck`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             .then((res) => {
                 console.log(res);
                 carregaProgresso(-1, todayHabits);

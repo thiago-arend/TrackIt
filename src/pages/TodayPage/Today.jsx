@@ -16,8 +16,9 @@ export default function Today() {
         dSemana: WEEK_DAYS_FULL[dayjs().format("d").toString()]
     };
     const dadosUsuario = localStorage.getItem("userData");
-    let user;
-
+    let user; // passar diretamente o user.token nas chamadas a api
+              // é uma maneira de evitar o 'delay' de renderização por mudança de estado
+              
     useEffect(() => {
 
         if (dadosUsuario !== null) {

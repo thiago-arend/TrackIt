@@ -12,7 +12,7 @@ import LoadingButton from "../../components/LoadingButton/LoadingButton";
 export default function AddHabit(props) {
     const {setListaHabitos, listaHabitos, setShowAddHabit} = props;
     const [disabledForm, setDisabledForm] = useState(false);
-    const { preparaConfig, setDadosAddHabit, dadosAddHabit } = useContext(UserContext);
+    const { preparaConfig, setDadosAddHabit, dadosAddHabit, token } = useContext(UserContext);
 
     const [habitoName, setHabitoName] = useState((dadosAddHabit !== null) ? dadosAddHabit.name : "");
     const [chosedDays, setChosedDays] = useState((dadosAddHabit !== null) ? dadosAddHabit.days : []);
@@ -30,7 +30,11 @@ export default function AddHabit(props) {
             days: chosedDays
         }
 
-        axios.post(`${URL_BASE}/habits`, obj, preparaConfig())
+        axios.post(`${URL_BASE}/habits`, obj, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then((res) => {
                 setDisabledForm(false);
                 setShowAddHabit(false);

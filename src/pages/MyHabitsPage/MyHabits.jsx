@@ -9,7 +9,7 @@ import { MSG_ERRO_INTERNO, URL_BASE } from "../../constants";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function MyHabits() {
-    const { preparaConfig, setProfileImage, setToken } = useContext(UserContext);
+    const { preparaConfig, setProfileImage, setToken, token } = useContext(UserContext);
     const [showAddHabit, setShowAddHabit] = useState(false);
     const [listaHabitos, setListaHabitos] = useState([]);
     const dadosUsuario = localStorage.getItem("userData");
@@ -36,7 +36,7 @@ export default function MyHabits() {
     function removerHabito(id) {
         axios.delete(`${URL_BASE}/habits/${id}`, {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${token}`
             }
         })
             .then(() => {
