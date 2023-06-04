@@ -7,37 +7,42 @@ export const UserProvider = ({ children }) => {
     const [profileImage, setProfileImage] =
         useState("https://static.wikia.nocookie.net/wikiesponja/images/4/41/180px-Spongebob-squarepants.png/revision/latest?cb=20120201005813&path-prefix=pt-br");
     const [dadosAddHabit, setDadosAddHabit] = useState(null);
-    const [todayHabits, setTodayHabits] = useState([]);
+    const [progress, setProgress] = useState({
+        total: 0,
+        concluidos: 0
+    });
 
-    function setDone(done, id) {
-        const array = todayHabits.map(p => {
+    //const [progress, setProgress] = useState([]);
+
+    /*function setDone(done, id) {
+        const array = progress.map(p => {
             if (p.id === id) {
                 p.done = done;
             }
             return p;
         });
-        setTodayHabits([...array]);
+        setProgress([...array]);
     }
 
     function setCurSeq(value, id) {
-        const array = todayHabits.map(p => {
+        const array = progress.map(p => {
             if (p.id === id) {
                 p.currentSequence = value;
             }
             return p;
         });
-        setTodayHabits([...array]);
+        setProgress([...array]);
     }
 
     function setHigSeq(value, id) {
-        const array = todayHabits.map(p => {
+        const array = progress.map(p => {
             if (p.id === id) {
                 p.highestSequence = value;
             }
             return p;
         });
-        setTodayHabits([...array]);
-    }
+        setProgress([...array]);
+    }*/
 
     const preparaConfig = () => {
         return {
@@ -55,11 +60,8 @@ export const UserProvider = ({ children }) => {
             token, setToken,
             profileImage,
             setProfileImage,
-            setDone,
-            setCurSeq,
-            setHigSeq,
-            setTodayHabits,
-            todayHabits
+            progress,
+            setProgress
         }}>
             {children}
         </UserContext.Provider>

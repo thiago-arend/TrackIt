@@ -6,17 +6,18 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function HabitMaintence(props) {
-    const { preparaConfig } = useContext(UserContext);
+    const { preparaConfig, setProgress } = useContext(UserContext);
     const { id, name, done, currentSequence, highestSequence } = props.habito;
-    const { todayHabits, setTodayHabits } = props;
+    const { todayHabits, setTodayHabits, carregaProgresso } = props;
 
-    function concluiHabito() {
+    function marcarHabito() {
 
         if (done === false) { // se tarefa não foi concluida, envia requisição específica
 
             axios.post(`${URL_BASE}/habits/${id}/check`, {}, preparaConfig())
             .then((res) => {
                 console.log(res);
+                carregaProgresso(1, todayHabits);
             })
             .catch((err) => {
                 if (err.response.request.status === 400)
@@ -28,6 +29,7 @@ export default function HabitMaintence(props) {
             axios.post(`${URL_BASE}/habits/${id}/uncheck`, {}, preparaConfig())
             .then((res) => {
                 console.log(res);
+                carregaProgresso(-1, todayHabits);
             })
             .catch((err) => {
                 if (err.response.request.status === 400)
@@ -43,7 +45,7 @@ export default function HabitMaintence(props) {
                 <span>Sequência atual: <span>{currentSequence} dias</span><br />Seu recorde: <span>{highestSequence} dias</span></span>
             </div>
             <div>
-                <img onClick={concluiHabito} src={check} />
+                <img onClick={marcarHabito} src={check} />
             </div>
         </HabitMaintenceContainer>
     );
