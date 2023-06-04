@@ -9,20 +9,36 @@ import { MSG_ERRO_INTERNO, URL_BASE } from "../../constants";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function MyHabits() {
-    const { preparaConfig } = useContext(UserContext);
+    const { preparaConfig, setProfileImage, setToken } = useContext(UserContext);
     const [showAddHabit, setShowAddHabit] = useState(false);
     const [listaHabitos, setListaHabitos] = useState([]);
+    const dadosUsuario = localStorage.getItem("userData");
+    let user;
 
     useEffect(() => {
 
-        axios.get(`${URL_BASE}/habits`, preparaConfig())
+        if (dadosUsuario !== null) {
+            user = JSON.parse(dadosUsuario);
+            setToken(user.token);
+            setProfileImage(user.image);
+        }
+
+        axios.get(`${URL_BASE}/habits`, {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        })
             .then((res) => {
                 setListaHabitos(res.data);
             });
     }, []);
 
     function removerHabito(id) {
-        axios.delete(`${URL_BASE}/habits/${id}`, preparaConfig())
+        axios.delete(`${URL_BASE}/habits/${id}`, {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        })
             .then(() => {
                 // apaga da lista para gerar reflexo instantaneo no layout
                 const novaLista = listaHabitos.filter(h => h.id !== id);

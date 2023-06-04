@@ -1,6 +1,6 @@
 import { LoginContainer, FormContainer } from "./styled";
 import Logo from "../../assets/logo.svg";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { URL_BASE, MSG_ERRO_INTERNO, MSG_ERRO_USUARIO_NAO_CADASTRADO, MSG_ERRO_SENHA_INCORRETA } from "../../constants";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,15 +8,25 @@ import { UserContext } from "../../contexts/UserContext";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
 export default function Login() {
-    const [disabledForm, setDisabledForm] = useState(false);
     const {setProfileImage, setToken} = useContext(UserContext);
     const navigate = useNavigate();
+    const [disabledForm, setDisabledForm] = useState(false);
     const [loginData, setLoginData] = useState(
         {
             email: "",
             password: ""
         }
     );
+
+    useEffect(() => {
+        const dadosUsuario = localStorage.getItem("userData");
+        if (dadosUsuario !== null) {
+            const user = JSON.parse(dadosUsuario);
+            setToken(user.token);
+            setProfileImage(user.image);
+            navigate("/hoje");
+        }
+    }, []);
 
     function handleChange(e) {
         const dados = { ...loginData };
@@ -33,6 +43,7 @@ export default function Login() {
                 setDisabledForm(false);
                 setToken(res.data.token);
                 setProfileImage(res.data.image);
+                localStorage.setItem("userData", JSON.stringify(res.data));
                 navigate("/hoje");
             })
             .catch((err) => {
