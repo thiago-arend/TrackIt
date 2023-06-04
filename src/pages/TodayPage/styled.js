@@ -19,7 +19,7 @@ export const DateContainer = styled.div`
         color: #126BA5;
     }
     span {
-        color: #BABABA;
+        color: ${props => props.alteraSpan ? "#8FC549" : "#BABABA"};
         font-size: 18px;
     }
 

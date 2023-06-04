@@ -39,7 +39,9 @@ export default function HabitMaintence(props) {
     }
 
     return (
-        <HabitMaintenceContainer done={done}>
+        <HabitMaintenceContainer
+            alteraRec={((currentSequence === highestSequence) && (currentSequence > 0))}
+            done={done}>
             <div>
                 <h1>{name}</h1>
                 <span>Sequência atual: <span>{currentSequence} dias</span><br />Seu recorde: <span>{highestSequence} dias</span></span>

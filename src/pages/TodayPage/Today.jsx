@@ -8,7 +8,7 @@ import { URL_BASE, WEEK_DAYS_FULL } from "../../constants";
 import dayjs from "dayjs";
 
 export default function Today() {
-    const {preparaConfig, setProgress} = useContext(UserContext);
+    const {preparaConfig, setProgress, progress} = useContext(UserContext);
     const [todayHabits, setTodayHabits] = useState([]);
     const date = {
         d: dayjs().format("DD"),
@@ -41,9 +41,15 @@ export default function Today() {
         <>
             {/*<HabitDate />*/}
             <TodayContainer>
-                <DateContainer>
+                <DateContainer alteraSpan={progress.concluidos > 0}>
                     <h1>{date.dSemana}, {date.d}/{date.m}</h1>
-                    <span>Nenhum hábito concluído ainda</span>
+                    {
+                        (progress.concluidos === 0)
+                        ?
+                        <span>Nenhum hábito concluído ainda</span>
+                        :
+                        <span>{Math.ceil(((progress.concluidos / progress.total)*100))}% dos hábitos concluídos</span>
+                    }
                 </DateContainer>
                 {todayHabits.map(h => <HabitMaintence 
                                         key={h.id}

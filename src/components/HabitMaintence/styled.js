@@ -38,7 +38,7 @@ export const HabitMaintenceContainer = styled.div`
             }
             // span highestSequence
             &:nth-child(3) {
-                color: #666;
+                color: ${props => props.alteraRec ? "#8FC549" : "#666"};
             }
 
             //span {
