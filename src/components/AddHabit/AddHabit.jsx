@@ -33,12 +33,17 @@ export default function AddHabit(props) {
         axios.post(`${URL_BASE}/habits`, obj, preparaConfig())
             .then((res) => {
                 setDisabledForm(false);
-                console.log(res);
+                setShowAddHabit(false);
+                setListaHabitos([...listaHabitos, res.data]);
             })
             .catch((err) => {
+                if (err.response.request.status === 422)
+                    alert(MSG_ERRO_NAO_NOMEOU_HABITO);
+                else
+                    alert(MSG_ERRO_INTERNO);
+                    
                 setDisabledForm(false);
-                console.log(err);
-            })
+            });
     }
 
     function handleCancelar() {
