@@ -32,34 +32,21 @@ export default function AddHabit(props) {
 
         axios.post(`${URL_BASE}/habits`, obj, preparaConfig())
             .then((res) => {
-                
-                limparDados()
                 setDisabledForm(false);
-                setShowAddHabit(false);
-
-                setListaHabitos([...listaHabitos, res.data]);
+                console.log(res);
             })
-            .catch(() => {
-
+            .catch((err) => {
                 setDisabledForm(false);
-                alert(MSG_ERRO_NAO_NOMEOU_HABITO);
-            });
+                console.log(err);
+            })
     }
 
-    function persisteDados() {
-        setDadosAddHabit(
-            {
-                name: habitoName,
-                days: chosedDays
-            }
-        );
+    function handleCancelar() {
         setShowAddHabit(false);
-    }
-
-    function limparDados() {
-        setDadosAddHabit(null);
-        setChosedDays([]);
-        setHabitoName("");
+        setDadosAddHabit({
+            name: habitoName,
+            days: chosedDays
+        })
     }
 
     return (
@@ -78,14 +65,14 @@ export default function AddHabit(props) {
             </div>
             <div>
                 <button
-                    onClick={persisteDados}
+                    onClick={handleCancelar}
                     data-test="habit-create-cancel-btn">
                         Cancelar
                 </button>
                 <LoadingButton
                         disabled={disabledForm}
                         texto="Salvar"
-                        type="button"
+                        type="submit"
                         width="42"
                         height="42"
                         funcaoClick={sendApiData} />
