@@ -8,8 +8,7 @@ import { URL_BASE, WEEK_DAYS_FULL } from "../../constants";
 import dayjs from "dayjs";
 
 export default function Today() {
-    const {preparaConfig} = useContext(UserContext);
-    const [todayHabits, setTodayHabits] = useState([]);
+    const {preparaConfig, todayHabits, setTodayHabits} = useContext(UserContext);
     const date = {
         d: dayjs().format("DD"),
         m: dayjs().format("MM"),
