@@ -64,6 +64,7 @@ export default function History() {
             <h1>Histórico</h1>
             <div>
                 <Calendar
+                    data-test="calendar"
                     onClickDay={abreLista}
                     className="calendar" 
                     tileClassName={

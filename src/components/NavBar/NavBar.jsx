@@ -21,7 +21,7 @@ export default function NavBar() {
         return (
             <NavBarContainer data-test="header">
                 <span>TrackIt</span>
-                <img onClick={deslogar} src={profileImage} />
+                <img onClick={deslogar} src={profileImage} data-test="avatar" />
             </NavBarContainer>
         )
 }

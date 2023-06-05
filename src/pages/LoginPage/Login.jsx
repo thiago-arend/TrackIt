@@ -89,7 +89,8 @@ export default function Login() {
                         texto="Entrar"
                         type="submit"
                         height="65"
-                        width="65" />
+                        width="65"
+                        teste="login-btn" />
                 </form>
             </FormContainer>
             <div>

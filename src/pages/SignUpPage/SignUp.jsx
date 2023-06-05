@@ -82,7 +82,8 @@ export default function SignUp() {
                         texto="Cadastrar"
                         type="submit"
                         height="65"
-                        width="65" />
+                        width="65"
+                        teste="signup-btn" />
                 </form>
             </FormContainer>
             <div><Link to="/" data-test="login-link">Já tem uma conta? Faça login!</Link></div>

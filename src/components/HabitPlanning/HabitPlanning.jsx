@@ -41,6 +41,7 @@ export default function HabitPlanning(props) {
                     {
                         WEEK_DAYS.map((d, index) =>
                             <StyledButton
+                                data-test="habit-day" 
                                 key={index}
                                 isChosed={(diasHabitos.includes(index) ? true : false)}
                             >

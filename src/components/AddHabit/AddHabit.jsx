@@ -101,7 +101,8 @@ export default function AddHabit(props) {
                         type="submit"
                         width="42"
                         height="42"
-                        funcaoClick={sendApiData} />
+                        funcaoClick={sendApiData}
+                        teste="habit-create-save-btn" />
             </div>
         </AddHabitContainer>
     )

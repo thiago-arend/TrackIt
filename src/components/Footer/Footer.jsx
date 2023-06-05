@@ -22,8 +22,8 @@ export default function Footer() {
         return (
             <FooterContainer data-test="menu">
                 <Link to="/habitos" data-test="habit-link">Hábitos</Link>
-                <Link to="/hoje">
-                    <TodayContainer data-test="today-link">
+                <Link to="/hoje" data-test="today-link">
+                    <TodayContainer>
                         <CircularProgressbar
                             text="Hoje"
                             value={progress.concluidos}

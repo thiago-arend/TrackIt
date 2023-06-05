@@ -23,7 +23,7 @@ export default function HabitMaintence(props) {
     }
 
     function marcarHabito() {
-
+        
         if (done === false) { // se tarefa não foi concluida, envia requisição específica
 
             axios.post(`${URL_BASE}/habits/${id}/check`, {}, {
@@ -63,11 +63,11 @@ export default function HabitMaintence(props) {
             alteraRec={((currentSequence === highestSequence) && (currentSequence > 0))}
             done={done}>
             <div>
-                <h1>{name}</h1>
-                <span>Sequência atual: <span>{currentSequence} dias</span><br />Seu recorde: <span>{highestSequence} dias</span></span>
+                <h1 data-test="today-habit-name" >{name}</h1>
+                <span>Sequência atual: <span data-test="today-habit-sequence">{currentSequence} dias</span><br />Seu recorde: <span data-test="today-habit-record">{highestSequence} dias</span></span>
             </div>
             <div>
-                <img onClick={marcarHabito} src={check} />
+                <img data-test="today-habit-check-btn" onClick={marcarHabito} src={check} />
             </div>
         </HabitMaintenceContainer>
     );

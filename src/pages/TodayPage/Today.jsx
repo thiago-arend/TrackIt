@@ -54,27 +54,25 @@ export default function Today() {
     }
 
     return (
-        <>
-            {/*<HabitDate />*/}
-            <TodayContainer>
-                <DateContainer alteraSpan={progress.concluidos > 0}>
-                    <h1>{date.dSemana}, {date.d}/{date.m}</h1>
-                    {
-                        (progress.concluidos === 0)
-                            ?
-                            <span>Nenhum hábito concluído ainda</span>
-                            :
-                            <span>{Math.ceil(((progress.concluidos / progress.total) * 100))}% dos hábitos concluídos</span>
-                    }
-                </DateContainer>
-                {todayHabits.map(h => <HabitMaintence
-                    key={h.id}
-                    habito={h}
-                    setTodayHabits={setTodayHabits}
-                    todayHabits={todayHabits}
-                    carregaProgresso={carregaProgresso}
-                    salvaProgresso={salvaProgresso} />)}
-            </TodayContainer>
-        </>
+        <TodayContainer>
+            <DateContainer alteraSpan={progress.concluidos > 0}>
+                <h1 data-test="today">{date.dSemana}, {date.d}/{date.m}</h1>
+                {
+                    (progress.concluidos === 0)
+                        ?
+                        <span data-test="today-counter">Nenhum hábito concluído ainda</span>
+                        :
+                        <span data-test="today-counter">{Math.ceil(((progress.concluidos / progress.total) * 100))}% dos hábitos concluídos</span>
+                }
+            </DateContainer>
+            {todayHabits.map(h => <HabitMaintence
+                data-test="today-habit-container" 
+                key={h.id}
+                habito={h}
+                setTodayHabits={setTodayHabits}
+                todayHabits={todayHabits}
+                carregaProgresso={carregaProgresso}
+                salvaProgresso={salvaProgresso} />)}
+        </TodayContainer>
     );
 }
