@@ -30,7 +30,7 @@ export default function HabitMaintence(props) {
                     Authorization: `Bearer ${token}`
                 }
             })
-            .then((res) => {
+            .then(() => {
                 carregaProgresso(1, todayHabits);
                 recarregaHabitos();
             })

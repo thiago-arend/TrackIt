@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createContext, useState } from 'react';
 
 export const UserContext = createContext();
@@ -10,6 +11,10 @@ export const UserProvider = ({ children }) => {
         total: 0,
         concluidos: 0
     });
+
+    //useEffect(() => {
+    //    localStorage.setItem("userProgress", JSON.stringify(progress));
+    //}, [progress]);
 
     function setDone(done, id) {
         const array = progress.map(p => {

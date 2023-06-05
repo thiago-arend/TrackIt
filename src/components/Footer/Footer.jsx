@@ -4,10 +4,19 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
+import { useEffect } from "react";
 
 export default function Footer() {
     const location = useLocation();
-    const {progress} = useContext(UserContext);
+    const {progress, setProgress} = useContext(UserContext);
+    const progressoUsuario = localStorage.getItem("userProgress");
+
+    /*useEffect(() => {
+        if (progressoUsuario !== null) {
+            const prog = JSON.parse(progressoUsuario);
+            setProgress(prog);
+        }
+    })*/
 
     if (location.pathname !== "/" && location.pathname !== "/cadastro")
         return (
