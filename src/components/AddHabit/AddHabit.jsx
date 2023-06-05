@@ -87,10 +87,11 @@ export default function AddHabit(props) {
                     disabled={disabledForm}
                     onChange={(e) => setHabitoName(e.target.value)} />
 
-                <DaysList chosedDays={chosedDays} setChosedDays={setChosedDays} />
+                <DaysList disabled={disabledForm} chosedDays={chosedDays} setChosedDays={setChosedDays} />
             </div>
             <div>
                 <button
+                    disabled={disabledForm}
                     onClick={handleCancelar}
                     data-test="habit-create-cancel-btn">
                         Cancelar

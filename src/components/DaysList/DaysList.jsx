@@ -2,7 +2,7 @@ import { DaysListContainer, StyledButton } from "./styled";
 import { WEEK_DAYS } from "../../constants";
 
 export default function DaysList(props) {
-    const { chosedDays, setChosedDays } = props;
+    const { disabled, chosedDays, setChosedDays } = props;
 
     return (
         <DaysListContainer>
@@ -20,6 +20,7 @@ export default function DaysList(props) {
                             )
                         )}
                     key={indice}
+                    disabled={disabled}
                     isChosed={(chosedDays.includes(indice) ? true : false)}
                     data-test="habit-day">{d}
                 </StyledButton>))}
