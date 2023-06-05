@@ -31,9 +31,6 @@ export default function History() {
         })
             .then((res) => {
                 setHistoricoHabitos([...res.data]);
-            })
-            .catch((err) => {
-                console.log(err);
             });
     }, []);
 

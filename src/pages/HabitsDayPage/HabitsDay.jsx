@@ -4,7 +4,6 @@ import { HabitsDayContainer, HabitContainer, Legenda } from "./styled";
 export default function HabitsDay() {
     const location = useLocation();
     const { day, habits } = location.state;
-    console.log(habits);
 
     return (
         <HabitsDayContainer>

@@ -42,9 +42,6 @@ export default function Today() {
                 setTodayHabits(res.data);
                 carregaProgresso(0, res.data);
                 salvaProgresso(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
             });
     }, []);
 
