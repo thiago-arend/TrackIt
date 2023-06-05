@@ -25,13 +25,9 @@ export default function History() {
             setProfileImage(user.image);
         }
 
-        setaHistoricoHabitos();
-    }, []);
-
-    function setaHistoricoHabitos() {
         axios.get(`${URL_BASE}/habits/history/daily`, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${user.token}`
             }
         })
             .then((res) => {
@@ -40,13 +36,12 @@ export default function History() {
             .catch((err) => {
                 console.log(err);
             });
-    }
+    }, []);
 
     function abreLista(value) {
         const data = historicoHabitos.find(d => Number(d.day.split("/")[0]) === value.getDate());
         if (data !== undefined){
             navigate("/habitosDia", {state: data});
-            setChangedScreen(!changedScreen)
         }
         else
             alert("Não há hábitos nesse dia");
