@@ -12,11 +12,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function History() {
-    const { setProfileImage, setToken, token } = useContext(UserContext);
+    const { setProfileImage, setToken, token, changedScreen, setChangedScreen } = useContext(UserContext);
     const dadosUsuario = localStorage.getItem("userData");
     const [historicoHabitos, setHistoricoHabitos] = useState([]);
-    const [completados, setCompletados] = useState([]);
-    const [naoCompletados, setNaoCompletados] = useState([]);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -38,18 +36,6 @@ export default function History() {
         })
             .then((res) => {
                 setHistoricoHabitos([...res.data]);
-
-                let completadosAux = [];
-                let naoCompletadosAux = [];
-
-                historicoHabitos.forEach(d => {
-                    const completou = d.habits.filter(h => h.done === true).length === d.habits.length;
-                    if (completou) completadosAux.push(Number(d.day.slice(0, 2)));
-                    else naoCompletadosAux.push(Number(d.day.slice(0, 2)));
-                });
-
-                setCompletados([...completadosAux]);
-                setNaoCompletados([...naoCompletadosAux]);
             })
             .catch((err) => {
                 console.log(err);
@@ -58,10 +44,28 @@ export default function History() {
 
     function abreLista(value) {
         const data = historicoHabitos.find(d => Number(d.day.split("/")[0]) === value.getDate());
-        if (data !== undefined)
+        if (data !== undefined){
             navigate("/habitosDia", {state: data});
+            setChangedScreen(!changedScreen)
+        }
         else
             alert("Não há hábitos nesse dia");
+    }
+
+    function retornaHabitos() {
+        let completadosAux = [];
+        let naoCompletadosAux = [];
+
+        historicoHabitos.forEach(d => {
+            const completou = d.habits.filter(h => h.done === true).length === d.habits.length;
+            if (completou) completadosAux.push(Number(d.day.slice(0, 2)));
+            else naoCompletadosAux.push(Number(d.day.slice(0, 2)));
+        });
+
+        return {
+            comp: completadosAux, 
+            naoComp: naoCompletadosAux
+        }
     }
 
     return (
@@ -73,8 +77,8 @@ export default function History() {
                     className="calendar" 
                     tileClassName={
                     ({ date, view }) => {
-                        if (view === "month" && completados.includes(date.getDate())) return "verde";
-                        if (view === "month" && naoCompletados.includes(date.getDate())) return "vermelho";
+                        if (view === "month" && retornaHabitos().comp.includes(date.getDate())) return "verde";
+                        if (view === "month" && retornaHabitos().naoComp.includes(date.getDate())) return "vermelho";
                     }} />
             </div>
         </HistoryContainer>

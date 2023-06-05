@@ -13,40 +13,6 @@ export const UserProvider = ({ children }) => {
         concluidos: 0
     });
 
-    //useEffect(() => {
-    //    localStorage.setItem("userProgress", JSON.stringify(progress));
-    //}, [progress]);
-
-    function setDone(done, id) {
-        const array = progress.map(p => {
-            if (p.id === id) {
-                p.done = done;
-            }
-            return p;
-        });
-        setProgress([...array]);
-    }
-
-    function setCurSeq(value, id) {
-        const array = progress.map(p => {
-            if (p.id === id) {
-                p.currentSequence = value;
-            }
-            return p;
-        });
-        setProgress([...array]);
-    }
-
-    function setHigSeq(value, id) {
-        const array = progress.map(p => {
-            if (p.id === id) {
-                p.highestSequence = value;
-            }
-            return p;
-        });
-        setProgress([...array]);
-    }
-
     return (
         <UserContext.Provider value={{
             setDadosAddHabit,

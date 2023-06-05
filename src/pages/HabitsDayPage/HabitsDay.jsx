@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { HabitsDayContainer, HabitContainer, Legenda } from "./styled";
-import check from "../../assets/check.svg"
 
 export default function HabitsDay() {
     const location = useLocation();
