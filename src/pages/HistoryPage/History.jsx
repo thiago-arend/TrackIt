@@ -17,9 +17,9 @@ export default function History() {
     const [historicoHabitos, setHistoricoHabitos] = useState([]);
     const [completados, setCompletados] = useState([]);
     const [naoCompletados, setNaoCompletados] = useState([]);
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
     
-    console.log(naoCompletados);
+    
 
     useEffect(() => {
         let user;
@@ -58,17 +58,17 @@ export default function History() {
             });
     }
 
-    /*function abreLista(value) {
-        navigate("/habitosDia", 
-            {state: historicoHabitos.some(d => Number(d.day.split("/")[0])) === value.getDate()})
-    }*/
+    function abreLista(value) {
+        const data = historicoHabitos.find(d => Number(d.day.split("/")[0]) === value.getDate());
+        navigate("/habitosDia", {state: data})
+    }
 
     return (
         <HistoryContainer>
             <h1>Histórico</h1>
             <div>
                 <Calendar
-                    //onClickDay={abreLista}
+                    onClickDay={abreLista}
                     className="calendar" 
                     tileClassName={
                     ({ date, view }) => {
