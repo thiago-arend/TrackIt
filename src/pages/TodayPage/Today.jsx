@@ -1,7 +1,6 @@
-import HabitDate from "../../components/HabitDate/HabitDate";
 import HabitMaintence from "../../components/HabitMaintence/HabitMaintence";
 import { TodayContainer, DateContainer } from "./styled"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import axios from "axios";
 import { URL_BASE, WEEK_DAYS_FULL } from "../../constants";

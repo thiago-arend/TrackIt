@@ -12,7 +12,7 @@ import LoadingButton from "../../components/LoadingButton/LoadingButton";
 export default function AddHabit(props) {
     const {setListaHabitos, listaHabitos, setShowAddHabit} = props;
     const [disabledForm, setDisabledForm] = useState(false);
-    const { preparaConfig, setDadosAddHabit, dadosAddHabit, token, setTodayHabits, setProgress } = useContext(UserContext);
+    const { setDadosAddHabit, dadosAddHabit, token, setProgress } = useContext(UserContext);
 
     const [habitoName, setHabitoName] = useState((dadosAddHabit !== null) ? dadosAddHabit.name : "");
     const [chosedDays, setChosedDays] = useState((dadosAddHabit !== null) ? dadosAddHabit.days : []);

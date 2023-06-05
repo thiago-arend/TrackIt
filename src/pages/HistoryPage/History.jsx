@@ -1,5 +1,4 @@
 import { HistoryContainer } from "./styled";
-import HistoryCalendar from "../../components/HistoryCalendar/HistoryCalendar";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useEffect } from "react";

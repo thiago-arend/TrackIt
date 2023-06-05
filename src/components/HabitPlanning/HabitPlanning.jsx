@@ -1,4 +1,3 @@
-import DaysList from "../DaysList/DaysList"
 import { DaysListContainer, StyledButton } from "../DaysList/styled"
 import { HabitPlanningContainer } from "./styled"
 import { WEEK_DAYS, MSG_CONFIRMACAO_REMOVER_HABITO, URL_BASE } from "../../constants";
