@@ -27,7 +27,7 @@ export default function Footer() {
                         <CircularProgressbar
                             text="Hoje"
                             value={progress.concluidos}
-                            maxValue={progress.total}
+                            maxValue={(progress.total === 0) ? 100 : progress.total}
                             background="true"
                             backgroundPadding="6"
                             styles={buildStyles({
