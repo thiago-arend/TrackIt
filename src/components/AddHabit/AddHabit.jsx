@@ -12,7 +12,7 @@ import LoadingButton from "../../components/LoadingButton/LoadingButton";
 export default function AddHabit(props) {
     const {setListaHabitos, listaHabitos, setShowAddHabit} = props;
     const [disabledForm, setDisabledForm] = useState(false);
-    const { preparaConfig, setDadosAddHabit, dadosAddHabit, token } = useContext(UserContext);
+    const { preparaConfig, setDadosAddHabit, dadosAddHabit, token, setTodayHabits, setProgress } = useContext(UserContext);
 
     const [habitoName, setHabitoName] = useState((dadosAddHabit !== null) ? dadosAddHabit.name : "");
     const [chosedDays, setChosedDays] = useState((dadosAddHabit !== null) ? dadosAddHabit.days : []);
@@ -39,6 +39,7 @@ export default function AddHabit(props) {
                 setDisabledForm(false);
                 setShowAddHabit(false);
                 setListaHabitos([...listaHabitos, res.data]);
+                salvarProgresso();
             })
             .catch((err) => {
                 if (err.response.request.status === 422)
@@ -55,6 +56,22 @@ export default function AddHabit(props) {
         setDadosAddHabit({
             name: habitoName,
             days: chosedDays
+        })
+    }
+
+    function salvarProgresso() {
+        axios.get(`${URL_BASE}/habits/today`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((res) => {
+            const progresso = {
+                total: res.data.length,
+                concluidos: res.data.filter(h => h.done === true).length
+            }
+            setProgress({...progresso});
+            localStorage.setItem("userProgress", JSON.stringify(progresso));
         })
     }
 

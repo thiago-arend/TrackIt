@@ -5,6 +5,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [token, setToken] = useState(null);
+    const [todayHabits, setTodayHabits] = useState([]);
     const [profileImage, setProfileImage] = useState("");
     const [dadosAddHabit, setDadosAddHabit] = useState(null);
     const [progress, setProgress] = useState({
@@ -55,7 +56,9 @@ export const UserProvider = ({ children }) => {
             profileImage,
             setProfileImage,
             progress,
-            setProgress
+            setProgress,
+            todayHabits,
+            setTodayHabits
         }}>
             {children}
         </UserContext.Provider>

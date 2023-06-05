@@ -6,9 +6,9 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function HabitMaintence(props) {
-    const { token } = useContext(UserContext);
+    const { token, todayHabits, setTodayHabits } = useContext(UserContext);
     const { id, name, done, currentSequence, highestSequence } = props.habito;
-    const { todayHabits, setTodayHabits, carregaProgresso, salvaProgresso } = props;
+    const { carregaProgresso, salvaProgresso } = props;
 
     function recarregaHabitos() {
         axios.get(`${URL_BASE}/habits/today`, {
