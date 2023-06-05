@@ -12,7 +12,9 @@ export default function HabitsDay() {
             <h1>Hábitos de {day}</h1>
             {
                 habits.map(h => (
-                    <HabitContainer done={h.done}>
+                    <HabitContainer 
+                        done={h.done}
+                        key={h.id}>
                         <span>{h.name}</span>
                         <span>{h.highest}</span>
                     </HabitContainer>)

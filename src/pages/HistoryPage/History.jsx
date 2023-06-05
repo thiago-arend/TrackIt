@@ -19,8 +19,6 @@ export default function History() {
     const [naoCompletados, setNaoCompletados] = useState([]);
     const navigate = useNavigate();
     
-    
-
     useEffect(() => {
         let user;
         if (dadosUsuario !== null) {
@@ -39,7 +37,7 @@ export default function History() {
             }
         })
             .then((res) => {
-                setHistoricoHabitos(res.data);
+                setHistoricoHabitos([...res.data]);
 
                 let completadosAux = [];
                 let naoCompletadosAux = [];
@@ -60,7 +58,10 @@ export default function History() {
 
     function abreLista(value) {
         const data = historicoHabitos.find(d => Number(d.day.split("/")[0]) === value.getDate());
-        navigate("/habitosDia", {state: data})
+        if (data !== undefined)
+            navigate("/habitosDia", {state: data});
+        else
+            alert("Não há hábitos nesse dia");
     }
 
     return (
