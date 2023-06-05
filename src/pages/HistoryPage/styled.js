@@ -3,7 +3,13 @@ import styled from "styled-components";
 export const HistoryContainer = styled.div`
     margin: 90px auto;
     padding: 0 18px;
-    width: fit-content;
+    width: 340px;
+
+    div {
+        background-color: #FFF;
+        border-radius: 10px;
+        border: 1px solid #FFF;
+    }
 
     h1, span {
         font-family: 'Lexend Deca';

@@ -9,6 +9,7 @@ import GlobalStyle from "./style/GlobalStyle";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import { UserProvider } from "./contexts/UserContext";
+import HabitsDay from "./pages/HabitsDayPage/HabitsDay";
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/habitos" element={<MyHabits />} />
           <Route path="/hoje" element={<Today />} />
           <Route path="/historico" element={<History />} />
+          <Route path="/habitosDia" element={<HabitsDay />} />
         </Routes>
         <Footer />
       </BrowserRouter>
