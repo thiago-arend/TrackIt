@@ -8,7 +8,7 @@ import { UserContext } from "../../contexts/UserContext";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
 export default function Login() {
-    const {setProfileImage, setToken, token, setProgress} = useContext(UserContext);
+    const {setProfileImage, setToken} = useContext(UserContext);
     const navigate = useNavigate();
     const [disabledForm, setDisabledForm] = useState(false);
     const [loginData, setLoginData] = useState(

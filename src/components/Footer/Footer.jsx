@@ -11,12 +11,12 @@ export default function Footer() {
     const {progress, setProgress} = useContext(UserContext);
     const progressoUsuario = localStorage.getItem("userProgress");
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (progressoUsuario !== null) {
             const prog = JSON.parse(progressoUsuario);
             setProgress(prog);
         }
-    })*/
+    }, []);
 
     if (location.pathname !== "/" && location.pathname !== "/cadastro")
         return (

@@ -17,7 +17,15 @@ export default function Today() {
     };
     const dadosUsuario = localStorage.getItem("userData");
     let user; // passar diretamente o user.token nas chamadas a api
-              // é uma maneira de evitar o 'delay' de renderização por mudança de estado
+    // é uma maneira de evitar o 'delay' de renderização por mudança de estado
+
+    function salvaProgresso(listaHabitos) {
+        const progresso = {
+            total: listaHabitos.length,
+            concluidos: listaHabitos.filter(h => h.done === true).length
+        }
+        localStorage.setItem("userProgress", JSON.stringify(progresso));
+    }
 
     useEffect(() => {
 
@@ -35,6 +43,7 @@ export default function Today() {
             .then((res) => {
                 setTodayHabits(res.data);
                 carregaProgresso(0, res.data);
+                salvaProgresso(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -48,7 +57,6 @@ export default function Today() {
                 + maisOuMenosUm
         });
     }
-
 
     return (
         <>
@@ -69,7 +77,8 @@ export default function Today() {
                     habito={h}
                     setTodayHabits={setTodayHabits}
                     todayHabits={todayHabits}
-                    carregaProgresso={carregaProgresso} />)}
+                    carregaProgresso={carregaProgresso}
+                    salvaProgresso={salvaProgresso} />)}
             </TodayContainer>
         </>
     );
