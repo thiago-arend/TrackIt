@@ -28,7 +28,7 @@
 <p>If you wish to explore the project's source code or contribute to its development, follow these steps:</p>
 
 <ol>
-  <li>Clone the repository from GitHub: <code>git clone https://github.com/thiago-arend/trackit.git</code></li>
+  <li>Clone the repository from GitHub: <code>git clone https://github.com/thiago-arend/projeto11-trackit.git</code></li>
   <li>Navigate to the project's directory: <code>cd trackit</code></li>
   <li>Install the necessary dependencies: <code>npm install</code></li>
   <li>Start the development server: <code>npm start</code></li>
